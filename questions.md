@@ -1,10 +1,10 @@
-1.
+### 1
 
 ```py
 sum([x for x in range(1, 100) if x % 2 == 1])
 ```
 
-2. 
+### 2
 
 保持元素的先后顺序
 
@@ -15,14 +15,14 @@ tmp.sort(key=lst.index)
 lst = tmp
 ```
 
-3.
+### 3
 
 ```py
 s = "abc"
 reversed_s = s[::-1]
 ```
 
-4. 
+### 4
 
 ```py
 import functools
@@ -59,7 +59,7 @@ def func(*args, **kw):
 func()
 ```
 
-5.
+### 5
 
 ```py
 class InterInt:
@@ -81,7 +81,7 @@ print(next(a))
 print(next(a))
 ```
 
-6. 
+### 6
 
 ```py
 class CustomDict:
@@ -103,7 +103,7 @@ print(cdict["a"])
 print(cdict["c"])
 ```
 
-7. 
+### 7
 
 使用单调递增队列去做，维护一个长度为 k 的队列，添加一个元素时，和队尾元素比较
 如果小于这个值，则弹出。并且弹出过期的元素。
