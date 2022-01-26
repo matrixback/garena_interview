@@ -97,4 +97,43 @@ print(cdict["a"])
 print(cdict["c"])
 ```
 
-7. 
+7. 使用单调递增队列去做，维护一个长度为 k 的队列，添加一个元素时，和队尾元素比较
+如果小于这个值，则弹出。并且弹出过期的元素。
+
+```py
+from typing import List
+import collections
+
+
+def find_lowest_players(k=3, map=[1, 2, 6, 2, 9, 6, 1, 8]) -> List[int]:
+    """
+    Find the player with lowest HP within given range.
+    Using a monotonically increasing queue to solve the problem.
+    Args:
+        k: the players count
+        map: A list of players' HPs
+    Returns:
+        the player with lowest HP within k
+    """
+    q = collections.deque()
+    for i in range(k):
+        while q and map[i] <= map[q[-1]]:
+            q.pop()
+        q.append(i)
+
+    res = [map[q[0]]]
+    for i in range(k, len(map)):
+        while q and map[i] <= map[q[-1]]:
+            q.pop()
+        q.append(i)
+        
+        while q[0] <= i - k:
+            q.popleft()
+            
+        res.append(map[q[0]])
+
+    return res
+
+
+print(find_lowest_players())
+```
