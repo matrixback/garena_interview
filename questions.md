@@ -53,4 +53,26 @@ def func(*args, **kw):
 func()
 
 ```
+5.
 
+```py
+class InterInt:
+    def __init__(self):
+        self.a = 1
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        res = self.a
+        self.a += 1
+        return res
+
+
+a = InterInt()
+print(next(a))
+print(next(a))
+print(next(a))
+```
+
+6. 
