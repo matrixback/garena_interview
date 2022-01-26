@@ -76,3 +76,25 @@ print(next(a))
 ```
 
 6. 
+
+```py
+class CustomDict:
+
+    def __setitem__(self, key, value):
+        setattr(self, key, value)
+
+    def __getitem__(self, key):
+        if hasattr(self, key):
+            return getattr(self, key)
+
+        raise KeyError(key)
+
+
+cdict = CustomDict()
+cdict["a"] = 1
+cdict["b"] = 2
+print(cdict["a"])
+print(cdict["c"])
+```
+
+7. 
