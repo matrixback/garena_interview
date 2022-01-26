@@ -15,3 +15,42 @@ lst = tmp
 s = "abc"
 reversed_s = s[::-1]
 ```
+
+4. 
+
+```py
+import functools
+import datetime
+import time
+
+
+def timeit(max_time):
+    """
+    计算函数执行时间的装饰器
+    """
+    def decorator(func):
+        @functools.wraps(func)
+        def wrapper(*args, **kw):
+            start = datetime.datetime.now()
+            res = func(*args, **kw)
+            end = datetime.datetime.now()
+            duration = int((end - start).total_seconds())
+            print(f'"{func.__name__}" function ran for {duration}s')
+            
+            if duration > max_time:
+                print(f'"{func.__name__}" function exceeds max_time')
+                
+            return res
+        return wrapper
+    return decorator
+
+
+@timeit(max_time=1)
+def func(*args, **kw):
+    time.sleep(2)
+
+
+func()
+
+```
+
